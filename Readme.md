@@ -36,63 +36,39 @@ Mendapatkan repository git di dalam project, bisa dengan menggunakan dua cara:
   
 
 ### Perintah perintah dalam Git
-
+```Git
 1. $ git status untuk melihat adakah perubahan pada work directory dan file yang berada di untracked dan tracked.
-
 2. $ git add <file> untuk mengubah status file / direktori menjadi staged.
-
 3. Mengabaikan file atau direktori bilamana terdapat perubahan di dalamnya, buat file dengan nama `.gitignore` sebagai contoh tambahkan `*.log` dan `build/` untuk mengabaikan perubahan pada file dengan ekstensi log dan folder dengan nama build (termasuk didalamnya).
-
 4. $ git commit -m “message” untuk memasukkan data snapshot ke dalam database git, ubah `message` dengan pesan sesuai kebutuhan, sebagai contoh `initial commit`.
-
 5. $ git commit --amend -m “message” untuk melakukan perubahan commit dan nama pesan.
-
 6. $ git reset HEAD `filename` untuk menyetel ulang file tersebut (kembali ke untracked).
-
 7. $ git checkout -- `filename` untuk menyetel ulang file pada commit sebelumnya.
-
 8. $ git remote add origin https://github.com/paulboone/ticgit untuk menambahkan remote.
-
 9. $ git remote -v untuk melihat daftar remote.
-
 10. $ git fetch origin untuk mengambil semua informasi pada remote origin.
-
 11. $ git pull origin master untuk menarik informasi dari remote origin.
-
 12. $ git push origin master untuk mengirimkan perubahan ke remote.
-
 13. $ git remote rename origin github untuk mengubah nama remote.
-
 14. $ git remote rm github untuk menghapus remote berdasarkan nama remote.
-
 15. $ git branch dev untuk membuat branch dev dan $ git checkout dev untuk berpindah ke branch dev atau dipersingkat dengan $ git checkout -b dev.
-
 16. $ git merge hotfix untuk menggabungkan branch sekarang dengan branch hotfix.
-
 17. $ git branch -d dev untuk menghapus branch dev di lokal.
-
 18. $ git push origin --all untuk berbagi semua branch yang ada di lokal ke remote (biasanya dipakai waktu initial push ke remote).
-
 19. $ git branch untuk melihat semua branch yang ada dan $ git branch -v untuk melihat commit terakhir di setiap branch.
-
 20. $ git branch --merged untuk melihat branch yang sudah merge ke branch sekarang.
-
 21. $ git branch --no-merged untuk melihat branch yang belum merge ke branch sekarang.
-
 22. $ git branch -D dev untuk menghapus branch dev secara paksa walaupun belum merge ke branch sekarang.
-
 23. $ git fetch origin untuk mendapatkan informasi terbaru yang ada di remote dan kemudian $ git merge origin/master untuk menggabungkan informasi tersebut ke local work directory.
-
 24. $ git push origin testing untuk mengirim local branch testing ke remote branch testing (local branch tidak sama dengan remote branch).
-
 25. $ git checkout -b dev origin/dev untuk membuat branch baru dengan titik awal pada remote branch dev.
-
 26. $ git push origin --delete hotfix-auth untuk menghapus remote branch hotfix-auth.
 27. $ git rebase development untuk melakukan rebasing branch sekarang dengan local branch development.
 28. $ git rebase origin/development untuk melakukan rebasing branch sekarang dengan remote branch development.
-29. $  git rebase --continue untuk melanjutkan proses rebasing sampai selesai dan berhasil.
-30. $  git rebase --abort untuk membatalkan rebasing.
+29. $ git rebase --continue untuk melanjutkan proses rebasing sampai selesai dan berhasil.
+30. $ git rebase --abort untuk membatalkan rebasing.
 31. $ git push origin development -f untuk mengirim perubahan ke remote branch  development secara paksa setelah melakukan rebasing. 
+```
 
 ## SDLC dan Figma Introduction 
 Software Development Life Cycle merupakan sebuah proses yang digunakan oleh industri software untuk mendesign, mengembangkan dan menguji aplikasi dengan kualitas yang tinggi.
@@ -286,6 +262,84 @@ Pembuatan instance class pada kotlin tidak memerlukan keyword new cukup langsung
     println(UserModel("Angga", 12))
     }
 ```
+### Numbers
+Kotlin menyediakan tipe data yang merepresentasikan nilai angka, baik angka bulat maupun angka desimal.
+```Kotlin
+val int = 10
+val long = 1000L
+val byte: Byte = 1
+val short: Short = 10
+val double = 1000.0
+val float = 1000.0F
+```
+### Operations
+```
+Kotlin mendukung proses aritmatika menggunakan operator ( + ), ( - ), ( / ), ( * ) dan ( % ).
+```
+```Kotlin
+val number = 10
+val count = 5
+val sum = number + count
+val subtract = number - count
+val multiple = number * count
+val divider = number / count
+val modulo = number % count
+```
+### Strings
+Kotlin menyediakan tipe data text yang berisikan sejumlah karakter.
+Char
+String
+Charsequence
+```Kotlin
+val char = 'a'
+val charSequence: CharSequence = "abcdef"
+val string = "1234567890"
+val chars = string.toCharArray()
+val text = charSequence.toString()
+```
+### Booleans
+Kotlin menyediakan tipe data yang hanya memiliki value true atau false yang dinamai dengan Boolean.
+Boolean bisa didapatkan dengan kombinasi || atau or, && atau and dan ! (negasi).
+```Kotlin
+val truthy = true
+val falsy = false
+val disjunction = truthy or falsy           // or: truthy || falsy
+val conjunction = truthy and falsy          // or: truthy && falsy
+val negation = !truthy
+```
+### Arrays
+Arrays di dalam kotlin digunakan untuk menampung data array.
+
+```Kotlin
+val array = Array(100) { it + 1 }   // Create array from 1 to 100
+array[array.lastIndex] = 1000
+println(array[array.lastIndex])
+array.forEach { println(it) }
+```
+### Lists
+List merupakan tipe data collection yang sering dipakai di dalam kotlin, ada dua macam list yaitu list (read only) dan mutable list.
+```Kotlin
+val list = listOf(1, 2, 3)
+println(list[list.lastIndex])
+
+val mutableList = mutableListOf(1, 2, 3)
+mutableList[mutableList.lastIndex] = 100
+println(mutableList[mutableList.lastIndex])
+```
+### Map
+Tipe data map di dalam kotlin mempunyai arti tipe data yang memiliki properti berupa key dan value (key bersifat unik). Map di dalam kotlin terdapat dua macam yaitu Map (read only) dan HashMap.
+
+```Kotlin
+val person = mapOf("name" to "Clara", "age" to 12)
+println(person)
+
+val people = hashMapOf("name" to "Nanda", "age" to 21)
+people["age"] = 24
+println(people["name"] ?: "Anonymous")
+```
+
+
+
 </div>
 
  
