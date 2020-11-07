@@ -337,6 +337,59 @@ val people = hashMapOf("name" to "Nanda", "age" to 21)
 people["age"] = 24
 println(people["name"] ?: "Anonymous")
 ```
+### CLASSES AND INHERITANCE
+
+Class pada kotlin memiliki primary constructor dan bisa saja memiliki tambahan secondary constructor atau lebih.
+```Kotlin
+class Person(val name: String) {
+   val children = mutableListOf<Person>()
+   constructor(name: String, parent: Person) : this(name) {
+       parent.children.add(this)
+   }
+}
+val parent = Person("Abi")
+val child = Person("Fulan", parent)
+
+println(parent.children.joinToString { it.name })
+```
+Kotlin dalam membuat class menggunakan sebuah keyword class, kotlin juga mendukung secara penuh konsep object oriented programming.
+
+```
+class Rectangle {
+   var width: Double = 0.0
+   var height: Double = 0.0
+
+   fun printName() = println("Rectangle with height: $height and width: $width")
+}
+
+val rectangle = Rectangle()
+rectangle.height = 100.0
+rectangle.width = 150.0
+rectangle.printName()
+```
+#### Inheritance
+Semua class pada kotlin bersifat final artinya tidak dapat diturunkan, untuk membuat inheritance perlu ditambahkan keyword open sebelum class.
+```
+open class Person(val name: String) {
+   var age = 0
+}
+
+class Adult(name: String) : Person(name) {
+   init {
+       age = 18
+   }
+}
+```
+### Function
+Function declarations
+Functions in Kotlin are declared using the fun keyword:
+```
+fun double(x: Int): Int {
+
+    return 2 * x
+
+}
+```
 
 
 
