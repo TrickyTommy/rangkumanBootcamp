@@ -390,6 +390,75 @@ fun double(x: Int): Int {
 
 }
 ```
+### Collections
+#### ITERATORS
+Melakukan perulangan secara berurutan pada collection di kotlin.
+```Kotlin
+val numbers = listOf("one", "two", "three", "four")
+// Iterable
+val numbersIterator = numbers.iterator()
+while (numbersIterator.hasNext()) { println(numbersIterator.next()) }
+// For
+for (item in numbers) { println(item) }
+// Foreach
+numbers.forEach { println(it) }
+```
+#### Squence
+Sama seperti dengan iterators, namun sequence melakukan pendekatan dengan melakukan perulangan dengan multi step.
+Sequence pada kotlin mempunyai sebuah operasi, seperti filter, map, take, drop dsb.
+```Kotlin
+val numbers = generateSequence(10) { if (it < 100) it + 1 else null }
+numbers.filter { it % 2 == 0 }
+   .map { "Genap: $it" }
+   .take(10)
+   .drop(5)
+   .forEach { println(it) }
+```
+### TRANSFORMATIONS
+#### Map
+Transformasi map digunakan untuk mengubah value dari setiap item pada iterable.
+```Kotlin
+val numbers = setOf(1, 2, 3)
+println(numbers.map { it * 3 })
+println(numbers.mapIndexed { idx, value -> value * idx })
+
+println(numbers.mapNotNull { if ( it == 2) null else it * 3 })
+println(numbers.mapIndexedNotNull { idx, value -> if (idx == 0) null else value * idx })
+```
+#### FILTERING
+Filter merupakan function yang digunakan untuk menyaring data dari iterable berdasarkan kecocokan dengan predicate yang dimasukkan.
+```Kotlin
+val numbers = listOf("one", "two", "three", "four")
+val longerThan3 = numbers.filter { it.length > 3 }
+println(longerThan3)
+
+val numbersMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3, "key11" to 11)
+val filteredMap = numbersMap.filter { (key, value) -> key.endsWith("1") && value > 10}
+println(filteredMap)
+```
+#### GROUPING
+Kotlin dalam melakukan pengelompokan elemen dari iterable berdasarkan kriteria yang dimasukkan.
+
+~~~
+val numbers = listOf("one", "two", "three", "four", "five")
+
+println(numbers.groupBy { it.first().toUpperCase() })
+println(numbers.groupBy({ it.first() }, { it.toUpperCase() }))
+println(numbers.groupingBy { it.first() }.eachCount())
+~~~
+#### ORDERING
+**Natural order**
+
+Pengurutan data pada iterable secara ascending berdasarkan tipe datanya.
+```KOTLIN
+val numbers = listOf("one", "two", "three", "four")
+
+println("Sorted ascending: ${numbers.sorted()}")
+println("Sorted descending: ${numbers.sortedDescending()}")
+```
+
+
+
 
 
 
