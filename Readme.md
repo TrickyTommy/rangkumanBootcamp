@@ -124,28 +124,26 @@ Figma adalah editor grafis vektor dan alat prototyping berbasis web dan bersifat
 
 ## Kotlin Basic
 Nama sebuah package kotlin diletakkan di paling atas dari suatu file, kemudian baru melakukan import pada package yang berbeda.
+```Kotlin
     package main
     import models.UserModel
-    
     fun main() {
-    
     println("Hello world!")
-    
     println(UserModel("Hello", 12))
-    
     }
-
+```
 Titik awal kotlin adalah pada main function, sehingga semua aplikasi kotlin berawal dari main function.
 package main
+```Kotlin
     import models.UserModel
     
     fun main() { // Entry point
     println("Hello world!")
     println(UserModel("Hello", 12))
     }
-
+```
 Function yang memiliki dua parameter Int dengan pengembalian Int,
-
+```Kotlin
     fun sum(a: Int, b: Int): Int {
     return a + b
     }
@@ -156,28 +154,23 @@ Function yang memiliki dua parameter Int dengan pengembalian Int,
     fun printSum(a: Int, b: Int) {
     println("sum of $a and $b is ${a + b}")
     }
-
+```
 Kotlin menggunakan keyword val sebagai variabel yang bersifat read only (hanya bisa dibaca saja).
-
+```Kotlin
     val a: Int = 1 // immediate assignment
-    
     val b = 2 // `Int` type is inferred
-    
     val c: Int // Type required when no initializer is provided
-    
     c = 3 // deferred assignment
-
+```
 Variabel yang bersifat dapat diubah, kotlin menggunakan keyword var.
-
+```Kotlin
     var x = 5 // `Int` type is inferred
     
     x += 1
-
+```
 Seperti halnya dengan bahasa pemrograman lainnya, kotlin mendukung single line comment dan multi line comments.
-
-/
-
-    / This is an end-of-line comment
+```Kotlin
+    // This is an end-of-line comment
 
     /* This is a block comment
     
@@ -187,9 +180,9 @@ Seperti halnya dengan bahasa pemrograman lainnya, kotlin mendukung single line c
     /* contains a nested comment */
     
     and ends here. */
-
+```
 Membuat sebuah literal String pada koltin sama seperti dengan bahasa pemrograman lainnya, yaitu menggunakan single  quote ( ‘ ‘ ) atau double quotes ( “ “ ).
-
+```Kotlin
     var a = 1
     
     // simple name in template:
@@ -200,9 +193,10 @@ Membuat sebuah literal String pada koltin sama seperti dengan bahasa pemrograman
     // arbitrary expression in template:
     
     val s2 = "${s1.replace("is", "was")}, but now is $a"
-
+```
 Di dalam kotlin, conditional expression if hampir sama dengan bahasa pemrograman lainnya. Perbedaannya kotlin menggunakan if sebagai ternary operator juga.
 
+```Kotlin
     fun maxOf(a: Int, b: Int): Int {
     if (a > b) {
     return a
@@ -212,117 +206,86 @@ Di dalam kotlin, conditional expression if hampir sama dengan bahasa pemrograman
     }
 
     fun minOf(a: Int, b: Int) = if (a < b) a else b
-
+```
 Semua value di dalam kotlin yang bisa mempunyai nilai null perlu diperjelas menggunakan tanda tanya ( ? ).
 
+```Kotlin
     fun stringToInt(str: String): Int? {
     return try {
     parseInt(str)
-    
     } catch (ex: Exception) {
-    
     null}
-    
     }
     fun randomString(int: Int?) {
-    
     if (int != null) return print("Number $int")
-    
     return print("")
-    
     }
-
+```
 Kotlin menggunakan keyword for untuk melakukan perulangan pada jumlah yang sudah diketahui.
 
+```Kotlin
     val items = listOf("apple", "banana", "kiwi")
     for (item in items) {
     println(item)
     }
     // Or
     for (index in items.indices) {
-    
     println("item at $index is ${items[index]}")
-    
     }
-
+```
 Kotlin menggunakan keyword while untuk melakukan perulangan pada jumlah yang belum tentu diketahui.
 
+```Kotlin
     val items = listOf("apple", "banana", "kiwifruit")
     var index = 0
     while (index < items.size) {
     println("item at $index is ${items[index]}")
     index++
     }
-
+```
 Kotlin menggunakan keyword when sebagai pengganti switch case.
-
+```Kotlin
     fun describe(obj: Any): String =
-    
     when (obj) {
-    
     1 -> "One"
-    
     "Hello" -> "Greeting"
-    
     is Long -> "Long"
-    
     !is String -> "Not a string"
-    
     else -> "Unknown"
-    
     }
-
+```
 Kotlin mempunyai keyword in untuk mendeteksi sebuah angka di dalam sebuah deretan angka tertentu.
 
+```Kotlin
     val x = 10
-    
     val y = 9
-    
     if (x in 1..y + 1) println("fits in range")
-    
-      
-    
     val list = listOf("a", "b", "c")
-    
     if (-1 !in 0..list.lastIndex) println("-1 is out of range")
-    
     if (list.size !in list.indices) println("list size is out of valid list indices range, too")
-    
-      
-    
     for (z in 1..10 step 2) print(z)
-    
     for (z in 9 downTo 0 step 3) print(z)
-
+```
 Proses perulangan pada collection kotlin termasuk juga menambahkan built in method, seperti: map, filter, forEach dsb.
 
+
+```Kotlin
     val items = listOf("banana", "avocado", "apple", "kiwi")
-    
     for (item in items) {
-    
     println(item)
-    
     }
-    
     items.filter { it.contains("a", true) }
-    
     .sortedBy { it }
-    
     .map { it.toUpperCase() }
-    
     .forEach { println(it) }
-
+```
 Pembuatan instance class pada kotlin tidak memerlukan keyword new cukup langsung nama class dan diikuti dengan constructor class tersebut.
-
+```Kotlin
     data class UserModel(var name: String, var age: Int)
-    
-      
-    
     fun main() {
-    
     println(UserModel("Angga", 12))
-    
     }
+```
 </div>
 
  
